@@ -1,0 +1,4 @@
+const DATABASE='codex-packit-nord-beta';
+const STORE='app';
+export function load(){return new Promise((res,rej)=>{let r=indexedDB.open(DATABASE,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(STORE))r.result.createObjectStore(STORE);};r.onerror=()=>rej(r.error);r.onsuccess=()=>{let db=r.result;const tx=db.transaction(STORE,'readonly');const q=tx.objectStore(STORE).get('state');q.onsuccess=()=>res(q.result||null);q.onerror=()=>rej(q.error);tx.oncomplete=()=>db.close();};});}
+export function save(data){return new Promise((res,rej)=>{let r=indexedDB.open(DATABASE,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(STORE))r.result.createObjectStore(STORE);};r.onerror=()=>rej(r.error);r.onsuccess=()=>{let db=r.result,tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(data,'state');tx.oncomplete=()=>{db.close();res();};tx.onerror=()=>rej(tx.error);tx.onabort=()=>rej(tx.error);};});}
