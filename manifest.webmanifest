@@ -1,6 +1,6 @@
 {
  "name":"Codex Packit","short_name":"Packit","description":"Reiser, bagasje og pakkekontroll med Codex Nord.",
  "id":"./","start_url":"./","scope":"./","display":"standalone","orientation":"any",
- "background_color":"#0b1725","theme_color":"#0b1725",
+ "background_color":"#101A2B","theme_color":"#101A2B",
  "icons":[{"src":"./icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"./icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]
 }
