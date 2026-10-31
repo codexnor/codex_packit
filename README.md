@@ -1,17 +1,37 @@
-# Codex Packit – GitHub-test v0.4
+# Codex Packit – GitHub-test v0.4.1
 
 **Codex Nord / Polar Blue.** Mobil- og nettbrettilpasset PWA uten backend. HTML, CSS og JavaScript; alle prosjektressurser er inkludert. Denne utgaven er en **testversjon**, ikke en ferdig publisert app.
 
 ## Installer på GitHub Pages
 
 1. Ta en **JSON-sikkerhetskopi** fra eksisterende Packit: `Mer → Eksporter` før du oppdaterer.
-2. Pakk ut `Codex_Packit_GitHub_Test_v0.4.zip`.
+2. Pakk ut `Codex_Packit_GitHub_Test_v0.4.1.zip`.
 3. Last opp **innholdet i `codex-packit-github`** til roten av samme GitHub-repository som før. Erstatt filene `index.html`, `app.js`, `styles.css`, `storage.js`, `sw.js`, `manifest.webmanifest`, begge ikonfilene og dokumentasjonen. Ikke last opp bare ZIP-filen.
 4. Gå til `Settings → Pages → Deploy from a branch`, velg `main` og `/ (root)` dersom Pages ikke allerede er aktivert.
 5. Åpne GitHub Pages-adressen i Safari på iPhone/iPad. Velg Del → **Legg til på Hjem-skjerm** for appopplevelse.
-6. Etter opplasting: **last inn nettsiden på nytt**, eventuelt lukk og åpne appen igjen for å oppdatere PWA. Nye stil- og kodefiler er versjonsmerket `v=0.4.0` for å unngå at den gamle versjonen ligger i nettleserens cache.
+6. Etter opplasting: **last inn nettsiden på nytt**, eventuelt lukk og åpne appen igjen for å oppdatere PWA. Nye stil- og kodefiler er versjonsmerket `v=0.4.1` for å unngå at den gamle versjonen ligger i nettleserens cache.
 
 > **Viktig:** Privat turdata, deltakernavn og bilder skal ikke lastes opp til et offentlig GitHub-repository. De lagres lokalt i IndexedDB på hver enhet, og overføres bare hvis du selv eksporterer/importerer en JSON-sikkerhetskopi. Det er foreløpig **ingen synkronisering** mellom telefoner.
+
+## Nytt i v0.4.1 – arkivering og trygg sletting fra registre
+
+- Under **Deltakere** og **Mine ting → Bagasje / Pakkesett / Gjenstander** har hvert aktivt element tre handlinger: rediger (blyant), arkiver (arkiv) og slett fra registeret (søppelbøtte).
+- **Arkiver** skjuler elementet fra nye valg og lar deg hente det frem med «Vis arkiverte» og deretter «Gjenopprett».
+- **Slett fra registeret** krever bekreftelse. Elementet er ikke lenger synlig eller direkte tilgjengelig som nytt valg. Identitet, navn og nødvendige referansedata beholdes internt for å sikre eksisterende reiser og tilknyttede bilder.
+- Sletting her **påvirker aldri deltaker-/eierkoblinger, bagasje, pakkestatus eller gjenstander som allerede ligger på en tur**, heller ikke fullførte turer. Sletting fra **selve turen** er en annen handling og må gjøres separat.
+- En bagasjemal som allerede inneholder et pakkesett, beholder settet som referanse selv om du sletter settet fra den frittstående pakkesettlisten. Dette hindrer at innhold i en lagret bagasjemal forsvinner uventet.
+- Nye turposter som lages fra katalogen, får nå et eget bildefelt, slik at bilder ikke er avhengige av fremtidige katalogendringer.
+- Sikkerhetskopi har dataskjema **5** og tar med historikkreferanser og arkiv-/slettemarkeringer. Eksisterende v0.3/v0.4-data oppgraderes ved innlasting.
+
+### Rask test av sletting
+
+1. Opprett en deltaker, et pakkesett og lagret bagasje under registrene.
+2. Opprett en tur og hent inn disse elementene; sett turen til «Avsluttet» under Turinfo.
+3. Slett deltakeren, pakkesettet og bagasjemalen fra registrene.
+4. Åpne den avsluttede turen og kontroller at deltakeren, pakkegjenstandene, bagasjen og bildene fortsatt vises.
+5. Eksporter JSON, og prøv gjenoppretting i en separat testprofil.
+
+**Ta alltid JSON-sikkerhetskopi før du erstatter filene på GitHub.** Sletting fra registeret er bevisst ikke direkte reverserbar; bruk heller «Arkiver» for ting du tror du vil bruke igjen. Fullstendig fjerning av underliggende historiske data krever en separat slette-/personvernløsning og inngår ikke her.
 
 ## Endringer i v0.4
 
@@ -49,4 +69,4 @@
 
 ## Teknisk
 
-Statisk PWA med IndexedDB, service worker og relative URL-er. Begge JSON-skjemaene 3 og 4 støttes ved import, og data i v0.3-databasen `codex-packit-nord-beta` blir videreført. **Utgaven bruker skjema 4.**
+Statisk PWA med IndexedDB, service worker og relative URL-er. JSON-skjemaene 3, 4 og 5 støttes ved import, og data i v0.3-databasen `codex-packit-nord-beta` blir videreført. **Utgaven bruker skjema 5.**

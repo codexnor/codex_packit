@@ -93,3 +93,12 @@ button,a,label,input,select,textarea{touch-action:manipulation}
  .pack-line .icon-mini{width:29px;min-width:29px;flex-basis:29px}
  .modal{width:calc(100vw - 16px);max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 12px)}
 }
+
+/* v0.4.1 – Registeradministrasjon */
+.registry-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.registry-actions{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.registry-actions .danger-mini,.icon-mini.danger-mini{color:var(--bad)}
+.registry-actions button{width:36px;height:36px;min-width:36px;touch-action:manipulation}
+.library-bag .regular-row .icon-mini{flex-shrink:0}
+.library-bag .regular-row{flex-wrap:wrap}
+@media(max-width:670px){.registry-actions{margin-left:auto}.registry-toolbar{align-items:flex-start}.regular-row>.grow{min-width:0}}
